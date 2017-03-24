@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Success</title>
+  </head>
+  <body>
+    <h4><i>Welcome, {{request.session.current_user}}!</i></h4>
+    <h2>Visit our awesome pages:</h2>
+    <ul>
+      <li><a href="{% url 'gold:index' %}">Ninja Gold</a></li>
+      <li><a href="{% url 'courses:index' %}">Courses</a></li>
+      <li><a href="{% url 'survey:index' %}">Survey</a></li>
+      <li><a href="{% url 'disapearing_ninjas:index' %}">Disapearing Ninjas</a></li>
+    </ul>
+
+    <form action="{% url 'login:logout' %}" method="POST">
+      {% csrf_token %}
+      <input type="submit" value="Logout">
+    </form>
+  </body>
+</html>

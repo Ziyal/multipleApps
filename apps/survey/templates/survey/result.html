@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Dojo Survey - Submitted</title>
+  </head>
+  <body>
+    <div id="container">
+      <div id="count">
+        <p>Thanks for submitting this form! You have submitted this form {{ request.session.count }} times.</p>
+      <div id="inner-contents">
+        <h1>Submitted Info</h1>
+        <ul class="list-group">
+          {% for info in request.session.data.items %}
+          <li class="list-group-item"><b>{{ info.0 }}:</b> {{info.1}}</li>
+          {% endfor %}
+      </div>
+      <br><a href="{% url 'login:success' %}">HOME</a>
+    </div>
+    </p>
+  </body>
+</html>

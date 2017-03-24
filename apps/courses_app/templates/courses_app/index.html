@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Courses</title>
+  </head>
+  <body>
+    {% load staticfiles %}
+    <h1>Add a New Course:</h1>
+    <form action="{% url 'courses:process' %}" method="POST">
+       {% csrf_token %}
+      Name:<input type="text" name="name"><br>
+      Description:<input type="text" name="description"><br>
+      <input type="submit" name="Add">
+    </form>
+
+    <h1>Courses</h1>
+
+
+    <table style="width:700px">
+      <tr>
+        <th>Name:</th>
+        <th>Description:</th>
+        <th>Date Added:</th>
+        <th>Actions:</th>
+      </tr>
+      {% for post in courses %}
+        <tr>
+          <td>{{post.name}}</td>
+          <td>{{post.description}}</td>
+          <td>{{post.created_at}}</td>
+          <td><form action="destroy/{{post.id}}">{% csrf_token %}<input type="submit" value="Remove"></form></td>
+        </tr>
+      {% endfor %}
+    </table>
+    <br><br>
+    <a href="{% url 'login:success' %}">HOME</a>
+    <a href="{% url 'courses:add_user' %}">USER COURSES</a>
+  </body>
+</html>

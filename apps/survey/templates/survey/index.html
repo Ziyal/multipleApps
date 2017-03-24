@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Dojo Survey</title>
+  </head>
+  <body>
+    <div id="container">
+      <div id="inner-contents">
+        <h1>Dojo Survey</h1>
+        <h3>Add a User</h3>
+
+        <form name="myForm" action="{% url 'survey:process' %}" method="POST">
+          {% csrf_token %}
+
+          Your Name: <input type="text" name="name"><br>
+          Location:
+          <select name="location">
+            <option name="locations" value="Seattle">Seattle</option>
+            <option name="locations" value="LA">Los Angles</option>
+            <option name="locations" value="Austin">Austin</option>
+          </select><br>
+          Favorite Language:
+          <select name="language">
+            <option name="languages" value="Python">Python</option>
+            <option name="languages" value="Ruby">Ruby on Rails</option>
+            <option name="languages" value="MEAN">MEAN</option>
+            <option name="languages" value="C#">C#</option>
+          </select><br>
+
+          Comments (optional):
+          <br>
+          <textarea name="comments" cols="30" rows="7">Tell us about yourself.</textarea><br>
+            <input type="submit" value="Create User">
+        </form>
+      </div>
+      <br><a href="{% url 'login:success' %}">HOME</a>
+
+    </div>
+  </body>
+</html>

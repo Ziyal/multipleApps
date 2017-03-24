@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>User Courses</title>
+  </head>
+  <body>
+    <h2>Join a Course!</h2>
+    <form class="" action="{% url 'courses:add_user'%}" method="post">
+      {% csrf_token %}
+      <select name="user">
+        {% for user in users %}
+          <option value="{{user.id}}">{{user.first_name}} {{user.last_name}}</option>
+        {% endfor %}
+      </select>
+      <select name="course">
+        {% for course in courses %}
+        <option value="{{course.id}}">{{course.name}}</option>
+        {% endfor %}
+        <input type="submit" name="Add User to Course">
+      </select>
+    </form><br><br><br>
+
+    <table style="width:50%">
+      <tr>
+        <th>Course</th>
+        <th>Title</th>
+        <th>Number of Users</th>
+      </tr>
+        <tr>
+
+          <td>
+          {% for course in courses %}
+          <p>{{course.id}}</p>
+          {% endfor %}
+          </td>
+
+          <td>
+            {% for course in courses %}
+            <p>{{course.name}}</p>
+            {% endfor %}
+          </td>
+
+          <td>
+            {% for count in counts %}
+            <p>{{count.num_users}}</p>
+            {% endfor %}
+            <!-- if forloop.counter == forloop.parentloop.counter -->
+          </td>
+
+        </tr>
+    </table>
+
+    <!-- <table style="width:50%">
+      <tr>
+        <th>Course</th>
+        <th>Title</th>
+        <th>Number of Users</th>
+      </tr>
+        {% for course in courses %}
+        <tr>
+          <td>{{course.id}}</td>
+          <td>{{course.name}}</td>
+          <td>
+            {% for count in counts %}
+              {{count.num_users}}
+            {% endfor %}
+          </td>
+        </tr>
+      {% endfor %}
+    </table> -->
+
+
+    <a href="{% url 'courses:index' %}">BACK</a>
+  </body>
+</html>

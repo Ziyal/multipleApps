@@ -1,0 +1,46 @@
+* {
+  font-family: helvetica;
+}
+
+#container {
+  width: 400px;
+  height: 500px;
+  border: solid black 5px;
+  display: inline-block;
+  vertical-align: top;
+  margin: 25px;
+}
+
+#inner-contents {
+  width: 400px;
+  height: 400px;
+  margin: 15px;
+  display: inline-block;
+  vertical-align: top;
+
+}
+
+h1 {
+  text-align: center;
+  width: 400px;
+  margin-bottom: 5px;
+}
+
+h3 {
+  text-align: center;
+  margin-top: 0px;
+  font-style: italic;
+}
+
+.title {
+  font-weight: bold;
+}
+
+option {
+  font-weight: bold;
+}
+
+#error {
+  font-weight: bolder;
+  font-style: italic;
+}
